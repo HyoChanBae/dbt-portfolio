@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dbt-airflow-pipeline"
+version = "0.1.0"
+description = "dbt and Apache Airflow data pipeline project"
+readme = "README.md"
+requires-python = "==3.11.11"
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+dependencies = [
+    # Airflow Core & Providers
+    "apache-airflow>=2.8.0", # 환경에 맞는 최신 안정 버전을 권장합니다.
+    "apache-airflow-providers-mysql>=5.5.0",
+    "apache-airflow-providers-postgres>=5.11.0",
+
+    # Cosmos (Airflow + dbt Integration)
+    "astronomer-cosmos==1.9.2",
+
+    # dbt Core & Adapters
+    "dbt-core==1.7.0",
+    "dbt-mysql==1.7.0",
+    "dbt-postgres==1.7.0",
+
+    # Database Connectors
+    "mysql-connector-python>=8.0.33",
+    "mysqlclient>=2.2.0",
+    "psycopg2-binary>=2.9.9",
+
+    # Data Analysis & Tools
+    "pandas>=2.1.0",
+    "pyarrow>=14.0.0",
+    "protobuf==4.25.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipython>=8.18.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true

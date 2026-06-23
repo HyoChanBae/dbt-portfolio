@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: brazil_ecommerce
+    schema: testdb     # MySQL에서는 스키ma도 결국 DB 이름과 같음
+    tables:
+      - name: orders
+      - name: customers
