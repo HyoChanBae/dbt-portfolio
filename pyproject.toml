@@ -1,3 +1,6 @@
+[tool.poetry]
+package-mode = false
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -6,16 +9,17 @@ build-backend = "hatchling.build"
 name = "dbt-airflow-pipeline"
 version = "0.1.0"
 description = "dbt and Apache Airflow data pipeline project"
-readme = "README.md"
 requires-python = ">=3.11.9,<3.12"
 authors = [
     { name = "Your Name", email = "your.email@example.com" }
 ]
 dependencies = [
     # Airflow Core & Providers
-    "apache-airflow>=2.8.0", # 환경에 맞는 최신 안정 버전을 권장합니다.
+    "apache-airflow>=2.8.0",
     "apache-airflow-providers-mysql>=5.5.0",
     "apache-airflow-providers-postgres>=5.11.0",
+    "apache-airflow-providers-snowflake>=5.0.0",  # Snowflake Operator 사용을 위해 필요
+    "apache-airflow-providers-amazon>=8.0.0",     # MySQL -> S3 -> Snowflake 전송을 위해 필요
 
     # Cosmos (Airflow + dbt Integration)
     "astronomer-cosmos==1.9.2",
@@ -24,11 +28,13 @@ dependencies = [
     "dbt-core==1.7.0",
     "dbt-mysql==1.7.0",
     "dbt-postgres==1.7.0",
+    "dbt-snowflake==1.7.0", # dbt 버전(1.7.0)과 잘 일치함
 
     # Database Connectors
     "mysql-connector-python>=8.0.33",
     "mysqlclient>=2.2.0",
     "psycopg2-binary>=2.9.9",
+    "snowflake-connector-python>=3.5.0", # (선택) Python 스크립트로 직접 Snowflake 조회가 필요할 때 유용
 
     # Data Analysis & Tools
     "pandas>=2.1.0",
