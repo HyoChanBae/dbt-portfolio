@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: uk_crime
+    database: DEMO_RAW_DB
+    schema: PUBLIC
+
+    tables:
+      - name: csv_uk_crime
